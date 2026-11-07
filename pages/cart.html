@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="S3M Athletics — your cart. Review selections before checkout.">
+  <title>Cart | S3M Athletics</title>
+  <link rel="stylesheet" href="../css/style.css">
+   <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+  <script src="../js/cart-badge.js" defer></script>
+  <script src="../js/products.js" defer></script>
+</head>
+<body class="cart-page" style="background-color: #0b0b0b; color: #f5f5f5;">
+  <!-- ========== HEADER / NAVIGATION ========== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html#home" class="brand" aria-label="S3M Athletics home">
+        <img src="../images/logos3m.jpg" alt="S3M Athletics" class="brand-logo">
+      </a>
+
+      <nav class="primary-nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="../index.html#home" class="nav-link">Home</a></li>
+          <li><a href="shop.html#products" class="nav-link">Shop</a></li>
+          <li><a href="../index.html#about" class="nav-link">About</a></li>
+          <li><a href="contact.html#contact" class="nav-link">Contact</a></li>
+          <li><a href="faq.html#faq" class="nav-link">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <a href="cart.html" class="cart-indicator" aria-label="Shopping cart" style="text-decoration: none; color: inherit;">
+        <span class="cart-icon" aria-hidden="true">🛒</span>
+        <span class="cart-count" id="cart-count">0</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main>
+    <section class="cart-section" aria-labelledby="cart-heading" style="max-width: 1000px; margin: 40px auto; padding: 0 20px;">
+      <div class="container">
+        <div class="cart-header" style="margin-bottom: 30px;">
+          <span class="cart-eyebrow" style="color: #888; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">S3M ATHLETICS</span>
+          <h1 id="cart-heading" class="cart-heading" style="font-size: 2rem; margin-top: 5px; text-transform: uppercase; letter-spacing: 1px;">
+            YOUR CART.
+            <span class="cart-heading-accent" aria-hidden="true"></span>
+          </h1>
+          <p class="cart-description" style="color: #aaa; font-size: 0.95rem; margin-top: 8px;">
+            Review your selections before checkout. Cart state is stored locally in your browser — no account required.
+          </p>
+        </div>
+
+        <!-- Empty state (Controlled by JS) -->
+        <div class="cart-empty" id="cart-empty" style="display: none; text-align: center; padding: 60px 20px; background: #111; border: 1px solid #222; border-radius: 8px;">
+          <p class="cart-empty-title" style="font-size: 1.25rem; font-weight: 500; color: #fff; margin-bottom: 8px;">Your cart is empty.</p>
+          <p class="cart-empty-copy" style="color: #888; margin-bottom: 24px; font-size: 0.95rem;">Browse the collection and add products to get started.</p>
+          <a href="shop.html#products" class="btn btn-primary" style="display: inline-block; padding: 12px 24px; background: #fff; color: #000; text-decoration: none; font-weight: bold; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px;">Browse Products</a>
+        </div>
+
+        <!-- Cart contents (Controlled by JS) -->
+        <div class="cart-layout" id="cart-layout" style="display: none; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px;">
+
+          <!-- Items list -->
+          <div class="cart-items-wrap">
+            <h2 class="cart-items-heading" style="font-size: 1.1rem; margin-bottom: 16px; color: #aaa; text-transform: uppercase; letter-spacing: 0.5px;">Items</h2>
+            <ul class="cart-items" id="cart-items" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;"><!-- populated by JS --></ul>
+          </div>
+
+          <!-- Summary panel -->
+          <aside class="cart-summary" aria-labelledby="cart-summary-heading" style="background-color: #111; border: 1px solid #222; border-radius: 6px; padding: 24px; height: fit-content;">
+            <h2 id="cart-summary-heading" class="cart-summary-heading" style="font-size: 1.1rem; margin-bottom: 16px; border-bottom: 1px solid #222; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: #aaa;">Order Summary</h2>
+
+            <dl class="cart-summary-list" style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
+              <div class="cart-summary-row" style="display: flex; justify-content: space-between; font-size: 0.95rem; color: #ccc;">
+                <dt>Items</dt>
+                <dd id="cart-summary-count" style="margin: 0; font-weight: 500; color: #fff;">0</dd>
+              </div>
+              <div class="cart-summary-row" style="display: flex; justify-content: space-between; font-size: 0.95rem; color: #ccc;">
+                <dt>Subtotal</dt>
+                <dd id="cart-summary-subtotal" style="margin: 0; font-weight: 500; color: #fff;">₱0.00</dd>
+              </div>
+              <div class="cart-summary-row" style="display: flex; justify-content: space-between; font-size: 0.95rem; color: #ccc;">
+                <dt>Shipping</dt>
+                <dd style="margin: 0; color: #888;">Calculated at checkout</dd>
+              </div>
+              <div class="cart-summary-row cart-summary-row-total" style="display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: bold; color: #fff; border-top: 1px solid #222; padding-top: 12px; margin-top: 4px;">
+                <dt>Total</dt>
+                <dd id="cart-total" style="margin: 0;">₱0.00</dd>
+              </div>
+            </dl>
+
+            <div style="margin-top: 24px; text-align: right; border-top: 1px solid #222; padding-top: 20px;">
+              <a href="checkout.html" style="display: block; text-align: center; padding: 14px 28px; background: #fff; color: #000; text-decoration: none; border-radius: 4px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
+                Proceed to Checkout
+              </a>
+            </div>
+
+            <button type="button" class="cart-clear-btn" id="cart-clear" style="width: 100%; margin-top: 12px; padding: 10px; background: transparent; color: #888; border: 1px solid #333; border-radius: 4px; cursor: pointer; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">
+              Clear Cart
+            </button>
+          </aside>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer" style="text-align: center; padding: 40px 0; margin-top: 60px; border-top: 1px solid #222; color: #666; font-size: 0.9rem;">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <span class="footer-brand-name" style="color: #fff; font-weight: bold;">S3M Athletics</span>
+        <p class="footer-tagline" style="color: #888; font-size: 0.85rem; margin-top: 4px;">Built for the game. Designed for the culture.</p>
+      </div>
+      <div class="footer-copyright" style="margin-top: 20px;">
+        <p>&copy; 2026 S3M Athletics. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Logic Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cart = JSON.parse(localStorage.getItem('s3m_cart')) || [];
+      const cartEmptyEl = document.getElementById('cart-empty');
+      const cartLayoutEl = document.getElementById('cart-layout');
+      const cartItemsContainer = document.getElementById('cart-items');
+      const summaryCount = document.getElementById('cart-summary-count');
+      const summarySubtotal = document.getElementById('cart-summary-subtotal');
+      const cartTotal = document.getElementById('cart-total');
+      const clearBtn = document.getElementById('cart-clear');
+
+      function renderCart() {
+        const currentCart = JSON.parse(localStorage.getItem('s3m_cart')) || [];
+
+        if (currentCart.length === 0) {
+          cartEmptyEl.style.display = 'block';
+          cartLayoutEl.style.display = 'none';
+          return;
+        }
+
+        cartEmptyEl.style.display = 'none';
+        cartLayoutEl.style.display = 'grid';
+
+        let html = '';
+        let total = 0;
+        let count = 0;
+
+        currentCart.forEach((item, index) => {
+          const itemTotal = item.price * item.quantity;
+          total += itemTotal;
+          count += item.quantity;
+          
+          html += `
+            <li class="cart-item" style="display: flex; justify-content: space-between; align-items: center; background: #121212; border: 1px solid #222; padding: 14px 16px; border-radius: 4px;">
+              <div>
+                <p style="font-weight: 500; color: #fff; margin: 0;">${item.name}</p>
+                <p style="color: #888; font-size: 0.85rem; margin: 4px 0 0 0;">Qty: ${item.quantity} ${item.size ? `| Size: ${item.size}` : ''}</p>
+              </div>
+              <span style="font-weight: 500; color: #fff;">₱${itemTotal.toLocaleString()}</span>
+            </li>
+          `;
+        });
+
+        cartItemsContainer.innerHTML = html;
+        if (summaryCount) summaryCount.textContent = count;
+        if (summarySubtotal) summarySubtotal.textContent = `₱${total.toLocaleString()}`;
+        if (cartTotal) cartTotal.textContent = `₱${total.toLocaleString()}`;
+      }
+
+      // Clear Cart Functionality
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          localStorage.removeItem('s3m_cart');
+          renderCart();
+          // Trigger custom event if cart-badge listener needs update
+          window.dispatchEvent(new Event('storage'));
+        });
+      }
+
+      renderCart();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Checkout — S3M Athletics">
+  <title>Checkout | S3M Athletics</title>
+  <link rel="stylesheet" href="../css/style.css">
+   <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+  <script src="../js/cart-badge.js" defer></script>
+  <style>
+    /* Dark Theme Overrides for Checkout Form & Summary */
+    .checkout-main { color: #f5f5f5; }
+    .checkout-main input, 
+    .checkout-main select, 
+    .checkout-main textarea {
+      background-color: #121212 !important;
+      color: #fff !important;
+      border: 1px solid #333 !important;
+      border-radius: 4px;
+      padding: 12px;
+      font-size: 0.95rem;
+    }
+    .checkout-main input:focus, 
+    .checkout-main select:focus, 
+    .checkout-main textarea:focus {
+      outline: none;
+      border-color: #fff !important;
+    }
+    .checkout-main label {
+      color: #ccc;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .summary-card {
+      background-color: #111 !important;
+      border: 1px solid #222 !important;
+      border-radius: 6px;
+      padding: 24px;
+    }
+    .payment-box {
+      background-color: #161616 !important;
+      border: 1px solid #333 !important;
+      border-radius: 4px;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-place-order {
+      background: #fff !important;
+      color: #000 !important;
+      transition: background 0.2s;
+    }
+    .btn-place-order:hover {
+      background: #e0e0e0 !important;
+    }
+  </style>
+</head>
+<body style="background-color: #0b0b0b; color: #f5f5f5;">
+
+  <!-- ========== HEADER / NAVIGATION ========== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html#home" class="brand" aria-label="S3M Athletics home">
+        <img src="../images/logos3m.jpg" alt="S3M Athletics" class="brand-logo">
+      </a>
+
+      <nav class="primary-nav" aria-label="Main navigation">
+        <ul class="nav-list" style="list-style: none; display: flex; gap: 24px; margin: 0; padding: 0;">
+          <li><a href="../index.html#home" class="nav-link" style="color: #fff; text-decoration: none;">Home</a></li>
+          <li><a href="shop.html#products" class="nav-link" style="color: #fff; text-decoration: none;">Shop</a></li>
+          <li><a href="../index.html#about" class="nav-link" style="color: #fff; text-decoration: none;">About</a></li>
+          <li><a href="contact.html#contact" class="nav-link" style="color: #fff; text-decoration: none;">Contact</a></li>
+          <li><a href="faq.html#faq" class="nav-link" style="color: #fff; text-decoration: none;">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <a href="cart.html" class="cart-indicator" aria-label="Shopping cart" style="text-decoration: none; color: inherit;">
+        <span class="cart-icon" aria-hidden="true">🛒</span>
+        <span class="cart-count" id="cart-count">0</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Checkout Section -->
+  <main class="checkout-main" style="max-width: 1000px; margin: 40px auto; padding: 0 20px;">
+    <h1 style="font-size: 2rem; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 1px;">Checkout</h1>
+
+    <div class="checkout-grid" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px;">
+      
+      <!-- Checkout Form -->
+      <form id="checkout-form" style="display: flex; flex-direction: column; gap: 16px;">
+        <h2 style="font-size: 1.1rem; margin-bottom: 4px; color: #aaa; text-transform: uppercase; letter-spacing: 0.5px;">Shipping Details</h2>
+        
+        <div>
+          <label for="fullname" style="display: block; margin-bottom: 6px;">Full Name *</label>
+          <input type="text" id="fullname" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div>
+            <label for="email" style="display: block; margin-bottom: 6px;">Email Address *</label>
+            <input type="email" id="email" required>
+          </div>
+          <div>
+            <label for="phone" style="display: block; margin-bottom: 6px;">Phone Number *</label>
+            <input type="tel" id="phone" placeholder="+63 9..." required>
+          </div>
+        </div>
+
+        <div>
+          <label for="address" style="display: block; margin-bottom: 6px;">Street Address *</label>
+          <input type="text" id="address" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div>
+            <label for="city" style="display: block; margin-bottom: 6px;">City / Municipality *</label>
+            <input type="text" id="city" required>
+          </div>
+          <div>
+            <label for="province" style="display: block; margin-bottom: 6px;">Province / State *</label>
+            <input type="text" id="province" required>
+          </div>
+        </div>
+
+        <div>
+          <label for="region" style="display: block; margin-bottom: 6px;">Island Group / Region *</label>
+          <select id="region" required>
+            <option value="" style="background: #121212; color: #888;">Select Region</option>
+            <option value="Metro Manila" style="background: #121212; color: #fff;">Metro Manila</option>
+            <option value="Luzon" style="background: #121212; color: #fff;">Luzon</option>
+            <option value="Visayas" style="background: #121212; color: #fff;">Visayas</option>
+            <option value="Mindanao" style="background: #121212; color: #fff;">Mindanao</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="notes" style="display: block; margin-bottom: 6px;">Order Notes (Optional)</label>
+          <textarea id="notes" rows="3" placeholder="Notes about your order, e.g. special delivery instructions"></textarea>
+        </div>
+
+        <h2 style="font-size: 1.1rem; margin-top: 10px; margin-bottom: 4px; color: #aaa; text-transform: uppercase; letter-spacing: 0.5px;">Payment Method</h2>
+        <div class="payment-box">
+          <input type="radio" id="cod" name="payment" checked style="accent-color: #fff; width: 16px; height: 16px;">
+          <label for="cod" style="font-weight: 500; color: #fff; cursor: pointer; text-transform: none; font-size: 0.95rem;">Cash on Delivery (COD)</label>
+        </div>
+
+        <button type="submit" class="btn-place-order" style="margin-top: 12px; padding: 14px; border: none; border-radius: 4px; font-size: 1rem; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;">Place Order</button>
+      </form>
+
+      <!-- Order Summary Card -->
+      <div class="summary-card" style="height: fit-content;">
+        <h2 style="font-size: 1.1rem; margin-bottom: 16px; border-bottom: 1px solid #222; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: #aaa;">Order Summary</h2>
+        <div id="checkout-items-list" style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; max-height: 280px; overflow-y: auto;">
+          <!-- Dynamically populated via JS -->
+        </div>
+        <div style="border-top: 1px solid #222; padding-top: 14px; display: flex; justify-content: space-between; font-weight: bold; font-size: 1.1rem; color: #fff;">
+          <span>Total:</span>
+          <span id="checkout-total">₱0.00</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Success Modal Overlay -->
+  <div id="order-success-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); align-items: center; justify-content: center; z-index: 1000;">
+    <div style="background: #141414; border: 1px solid #333; padding: 40px; border-radius: 8px; max-width: 450px; width: 90%; text-align: center; color: #fff;">
+      <h2 style="font-size: 1.75rem; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Order Placed!</h2>
+      <p style="color: #aaa; margin-bottom: 24px; line-height: 1.5; font-size: 0.95rem;">Thank you, <span id="modal-name" style="color: #fff; font-weight: 500;"></span>! Your Cash on Delivery order for S3M Athletics has been received.</p>
+      <button onclick="window.location.href='../index.html'" style="padding: 12px 28px; background: #fff; color: #000; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px;">Return to Home</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer" style="text-align: center; padding: 40px 0; margin-top: 60px; border-top: 1px solid #222; color: #666; font-size: 0.9rem;">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <span class="footer-brand-name" style="color: #fff; font-weight: bold;">S3M Athletics</span>
+        <p class="footer-tagline" style="color: #888; font-size: 0.85rem; margin-top: 4px;">Built for the game. Designed for the culture.</p>
+      </div>
+      <div class="footer-copyright" style="margin-top: 20px;">
+        <p>&copy; 2026 S3M Athletics. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Checkout Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cart = JSON.parse(localStorage.getItem('s3m_cart')) || [];
+      const itemsContainer = document.getElementById('checkout-items-list');
+      const totalElement = document.getElementById('checkout-total');
+      const form = document.getElementById('checkout-form');
+      const modal = document.getElementById('order-success-modal');
+      const modalName = document.getElementById('modal-name');
+
+      if (!cart || cart.length === 0) {
+        itemsContainer.innerHTML = '<p style="color: #666; font-size: 0.9rem; margin: 0;">Your cart is empty.</p>';
+        totalElement.textContent = '₱0.00';
+        return;
+      }
+
+      let html = '';
+      let total = 0;
+
+      cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        html += `
+          <div style="display: flex; justify-content: space-between; font-size: 0.9rem; align-items: center; border-bottom: 1px solid #222; padding-bottom: 10px;">
+            <div>
+              <p style="font-weight: 500; margin: 0; color: #fff;">${item.name}</p>
+              <p style="color: #888; font-size: 0.8rem; margin: 0;">Qty: ${item.quantity} ${item.size ? `| Size: ${item.size}` : ''}</p>
+            </div>
+            <span style="font-weight: 500; color: #fff;">₱${itemTotal.toLocaleString()}</span>
+          </div>
+        `;
+      });
+
+      itemsContainer.innerHTML = html;
+      totalElement.textContent = `₱${total.toLocaleString()}`;
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const fullname = document.getElementById('fullname').value;
+        
+        localStorage.removeItem('s3m_cart');
+        
+        modalName.textContent = fullname;
+        modal.style.display = 'flex';
+      });
+    });
+  </script>
+
+</body>
+</html>

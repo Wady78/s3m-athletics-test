@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="S3M Athletics — product detail. Product information pending official release.">
+  <title>Product | S3M Athletics</title>
+  <link rel="stylesheet" href="../css/style.css">
+   <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+  <script src="../js/cart-badge.js" defer></script>
+  <script src="../js/products.js" defer></script>
+  <script src="../js/pdp.js" defer></script>
+</head>
+<body class="product-page">
+  <!-- ========== HEADER / NAVIGATION ========== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html#home" class="brand" aria-label="S3M Athletics home">
+        <img src="../images/logos3m.jpg" alt="S3M Athletics" class="brand-logo">
+      </a>
+
+      <nav class="primary-nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="../index.html#home" class="nav-link">Home</a></li>
+          <li><a href="shop.html#products" class="nav-link">Shop</a></li>
+          <li><a href="../index.html#about" class="nav-link">About</a></li>
+          <li><a href="contact.html#contact" class="nav-link">Contact</a></li>
+          <li><a href="faq.html#faq" class="nav-link">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <a href="cart.html" class="cart-link" aria-label="View Shopping Cart" style="text-decoration: none; color: inherit;">
+  <div class="cart-indicator" aria-label="Shopping cart">
+    <span class="cart-icon" aria-hidden="true">🛒</span>
+    <span class="cart-count">0</span>
+  </div>
+</a>
+  </header>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main>
+    <!-- Breadcrumb -->
+    <nav class="pdp-breadcrumb" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="pdp-breadcrumb-list">
+          <li><a href="../index.html#home" class="pdp-breadcrumb-link">Home</a></li>
+          <li class="pdp-breadcrumb-sep" aria-hidden="true">/</li>
+          <li><a href="shop.html#products" class="pdp-breadcrumb-link">Shop</a></li>
+          <li class="pdp-breadcrumb-sep" aria-hidden="true">/</li>
+          <li aria-current="page" class="pdp-breadcrumb-current">[Product Name]</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Product Detail -->
+    <section class="pdp-section" aria-labelledby="pdp-heading">
+      <div class="container pdp-grid">
+
+        <!-- ===== Gallery column ===== -->
+        <div class="pdp-gallery">
+          <div class="pdp-image-main pdp-placeholder" aria-hidden="true">
+            <span>[Product Image Pending]</span>
+          </div>
+
+          <div class="pdp-thumbs" role="list">
+            <div class="pdp-thumb pdp-placeholder" role="listitem" aria-hidden="true"><span>[Image]</span></div>
+            <div class="pdp-thumb pdp-placeholder" role="listitem" aria-hidden="true"><span>[Image]</span></div>
+            <div class="pdp-thumb pdp-placeholder" role="listitem" aria-hidden="true"><span>[Image]</span></div>
+            <div class="pdp-thumb pdp-placeholder" role="listitem" aria-hidden="true"><span>[Image]</span></div>
+          </div>
+        </div>
+
+        <!-- ===== Info column ===== -->
+        <div class="pdp-info">
+          <span class="pdp-category">[Category Pending]</span>
+
+          <h1 id="pdp-heading" class="pdp-name">[Product Name]</h1>
+
+          <p class="pdp-price">[Price Pending]</p>
+
+          <p class="pdp-description">
+            [Product description pending — official S3M product copy will be inserted here.]
+          </p>
+
+          <!-- Size selector -->
+          <div class="pdp-field">
+            <div class="pdp-field-header">
+              <span class="pdp-field-label">SIZE</span>
+              <span class="pdp-field-note">[Stock availability pending]</span>
+            </div>
+
+            <div class="pdp-size-grid" role="group" aria-label="Select a size">
+              <button type="button" class="pdp-size-btn" aria-pressed="false" data-size="S">S</button>
+              <button type="button" class="pdp-size-btn" aria-pressed="false" data-size="M">M</button>
+              <button type="button" class="pdp-size-btn" aria-pressed="false" data-size="L">L</button>
+              <button type="button" class="pdp-size-btn" aria-pressed="false" data-size="XL">XL</button>
+              <button type="button" class="pdp-size-btn" aria-pressed="false" data-size="2XL">2XL</button>
+              <button type="button" class="pdp-size-btn" aria-pressed="false" data-size="3XL">3XL</button>
+            </div>
+          </div>
+
+          <!-- Quantity -->
+          <div class="pdp-field">
+            <span class="pdp-field-label">QUANTITY</span>
+
+            <div class="pdp-qty">
+              <button type="button" class="pdp-qty-btn" data-qty-action="dec" aria-label="Decrease quantity">−</button>
+              <input
+                type="number"
+                class="pdp-qty-input"
+                id="pdp-quantity"
+                name="quantity"
+                value="1"
+                min="1"
+                step="1"
+                aria-label="Quantity"
+              >
+              <button type="button" class="pdp-qty-btn" data-qty-action="inc" aria-label="Increase quantity">+</button>
+            </div>
+            <span class="pdp-field-note pdp-qty-note">[Max quantity pending]</span>
+          </div>
+
+          <!-- Add to cart (UI only) -->
+          <button type="button" class="btn btn-primary pdp-add-to-cart" id="pdp-add-to-cart" disabled>
+            Add to Cart
+          </button>
+          <p class="pdp-cart-note" id="pdp-cart-note" role="status" aria-live="polite"></p>
+
+          <!-- Info list — confirmed facts + pending policies -->
+          <ul class="pdp-info-list">
+            <li class="pdp-info-item">
+              <span class="pdp-info-label">Payment</span>
+              <span class="pdp-info-value">Cash on Delivery (COD) — initial payment method</span>
+            </li>
+            <li class="pdp-info-item">
+              <span class="pdp-info-label">Shipping</span>
+              <span class="pdp-info-value">By zone: Metro Manila · Luzon · Visayas · Mindanao</span>
+            </li>
+            <li class="pdp-info-item">
+              <span class="pdp-info-label">Availability</span>
+              <span class="pdp-info-value">[Stock availability pending]</span>
+            </li>
+            <li class="pdp-info-item">
+              <span class="pdp-info-label">Returns</span>
+              <span class="pdp-info-value">[Return policy pending]</span>
+            </li>
+          </ul>
+
+          <p class="pdp-notice">
+            [Product information pending] — this is a reusable template. Official product data, images, and details will be inserted once provided.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <span class="footer-brand-name">S3M Athletics</span>
+        <p class="footer-tagline">Built for the game. Designed for the culture.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <ul class="footer-nav-list">
+          <li><a href="../index.html#home" class="footer-link">Home</a></li>
+          <li><a href="shop.html#products" class="footer-link">Shop</a></li>
+          <li><a href="../index.html#about" class="footer-link">About</a></li>
+          <li><a href="contact.html#contact" class="footer-link">Contact</a></li>
+          <li><a href="faq.html#faq" class="footer-link">FAQ</a></li>
+          <li><a href="#" class="footer-link">Privacy Policy</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-copyright">
+        <p>&copy; 2025 S3M Athletics. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
